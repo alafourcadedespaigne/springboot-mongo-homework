@@ -16,7 +16,7 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@Document
+@Document(collection = "people")
 public class PersonDocument {
 
     @Id

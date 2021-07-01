@@ -1,7 +1,7 @@
 package com.alafourcadev.demomongodb.persistence.repositories;
 
 import com.alafourcadev.demomongodb.domain.entities.Person;
-import com.alafourcadev.demomongodb.domain.mapper.PersonMapper;
+import com.alafourcadev.demomongodb.persistence.mapper.PersonMapper;
 import com.alafourcadev.demomongodb.domain.repositories.PersonRepository;
 import com.alafourcadev.demomongodb.persistence.model.PersonDocument;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class PersonMongoDBRepository implements PersonRepository {
     /**
      * This method is used to persist a person in the mongodb database, using the PersonMapper
      * class to transform the person object of the domain into its corresponding Person Document
-     * Please see the {@link com.alafourcadev.demomongodb.domain.mapper.PersonMapper}
+     * Please see the {@link com.alafourcadev.demomongodb.persistence.mapper.PersonMapper}
      *
      * @param person Entity of the domain that contains the person data.
      *               See the {@link com.alafourcadev.demomongodb.domain.entities.Person}
@@ -46,7 +46,7 @@ public class PersonMongoDBRepository implements PersonRepository {
     /**
      * This method is used to query the database to find a person by name, using the PersonMapper
      * class to transform the document object of the database into its corresponding Person of Domain
-     * Please see the {@link com.alafourcadev.demomongodb.domain.mapper.PersonMapper}
+     * Please see the {@link com.alafourcadev.demomongodb.persistence.mapper.PersonMapper}
      *
      * @param name Name of the person to be found in the  database.
      *               See the {@link com.alafourcadev.demomongodb.domain.entities.Person}
@@ -61,7 +61,7 @@ public class PersonMongoDBRepository implements PersonRepository {
     /**
      * This method is used to query the database to find a person by age,using the PersonMapper
      *  class to transform the document object of the database into its corresponding Person of Domain
-     * Please see the {@link com.alafourcadev.demomongodb.domain.mapper.PersonMapper}
+     * Please see the {@link com.alafourcadev.demomongodb.persistence.mapper.PersonMapper}
      *
      * @param age Age of the person to be found in the  database.
      *               See the {@link com.alafourcadev.demomongodb.domain.entities.Person}
@@ -78,7 +78,7 @@ public class PersonMongoDBRepository implements PersonRepository {
     /**
      * This method is used to query the database to find a person by age and name, using the PersonMapper
      * class to transform the document object of the database into its corresponding Person of Domain
-     * Please see the {@link com.alafourcadev.demomongodb.domain.mapper.PersonMapper}
+     * Please see the {@link com.alafourcadev.demomongodb.persistence.mapper.PersonMapper}
      *
      * @param name Name of the person to be found in the  database.
      * @param age Age of the person to be found in the  database.
@@ -99,7 +99,7 @@ public class PersonMongoDBRepository implements PersonRepository {
     /**
      * This method is used to return a list of all the people found in the database, using the PersonMapper
      * class to transform the list of document object of the database into its corresponding Person of Domain
-     * Please see the {@link com.alafourcadev.demomongodb.domain.mapper.PersonMapper}
+     * Please see the {@link com.alafourcadev.demomongodb.persistence.mapper.PersonMapper}
      * See the {@link com.alafourcadev.demomongodb.domain.entities.Person}
      * @return Entity person saved
      */

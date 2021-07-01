@@ -1,4 +1,4 @@
-package com.alafourcadev.demomongodb.domain.mapper;
+package com.alafourcadev.demomongodb.persistence.mapper;
 
 import com.alafourcadev.demomongodb.domain.entities.Person;
 import com.alafourcadev.demomongodb.persistence.model.PersonDocument;
