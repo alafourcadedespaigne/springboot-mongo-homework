@@ -1,5 +1,7 @@
 package com.alafourcadev.demomongodb.domain.entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +16,11 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
+@ApiModel(description = "Domain Model corresponding to Person")
 public class Person {
 
+    @ApiModelProperty(value = "Person name", required = true)
     private String name;
+    @ApiModelProperty(value = "Person age", required = true)
     private Integer age;
 }
