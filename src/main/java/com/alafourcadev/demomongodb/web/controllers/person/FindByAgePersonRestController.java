@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "Person Rest Controller", value = "REST controller to search for people by age")
+@Api(tags = "Person Rest Controller", value = "Rest controller to handle the services associated with people")
 @RequestMapping("/people")
 public class FindByAgePersonRestController {
 
