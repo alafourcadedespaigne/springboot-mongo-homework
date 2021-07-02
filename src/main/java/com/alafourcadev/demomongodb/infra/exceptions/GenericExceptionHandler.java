@@ -38,9 +38,17 @@ public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
         Optional<DomainException> domainExceptionOpt = getDomainExceptionFromThrowable(ex);
         if (domainExceptionOpt.isPresent()) {
             DomainException domainException = domainExceptionOpt.get();
-            apiError.setStatus(HttpStatus.BAD_REQUEST.value());
-            apiError.setError(HttpStatus.BAD_REQUEST);
-            apiError.loadErrorDetails(domainException.getErrorDetails());
+            if(domainException.getStatus() != null){
+                apiError.setStatus(domainException.getStatus().value());
+                apiError.setError(domainException.getStatus());
+                apiError.loadErrorDetails(domainException.getErrorDetails());
+            }
+            else{
+                apiError.setStatus(HttpStatus.BAD_REQUEST.value());
+                apiError.setError(HttpStatus.BAD_REQUEST);
+                apiError.loadErrorDetails(domainException.getErrorDetails());
+            }
+
 
             try {
                 message = domainException.getMessage();
@@ -48,6 +56,7 @@ public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
                 message = domainException.getMessage() != null && !domainException.getMessage().isEmpty() ? domainException.getMessage() : mex.getMessage();
             }
         }
+
         apiError.setMessage(message);
         apiError.setDebugMessage(message);
         log.error(message, ex);

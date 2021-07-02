@@ -76,7 +76,7 @@ public class ApiResponseBase<T> {
 
     public ApiResponseBase(T result, HttpStatus httpStatus, Integer resultCount) {
         this.statusCode = httpStatus.value();
-        this.statusMessage = "Operación correcta.";
+        this.statusMessage = "OK";
         this.resultCount = resultCount;
         this.result = result;
     }
