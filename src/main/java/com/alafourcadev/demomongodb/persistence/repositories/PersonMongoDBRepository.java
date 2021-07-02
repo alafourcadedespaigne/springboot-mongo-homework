@@ -93,7 +93,7 @@ public class PersonMongoDBRepository implements PersonRepository {
                 .filter(doc -> name.equals(doc.getName()) && age.equals(doc.getAge()))
                 .findAny()
                 .orElse(null);
-        return Optional.of(mapper.toPerson(filteredPersonDocument));
+        return Optional.ofNullable(mapper.toPerson(filteredPersonDocument));
     }
 
     /**

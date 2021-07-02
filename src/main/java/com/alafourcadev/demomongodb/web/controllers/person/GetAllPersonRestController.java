@@ -1,7 +1,7 @@
 package com.alafourcadev.demomongodb.web.controllers.person;
 
 import com.alafourcadev.demomongodb.domain.entities.Person;
-import com.alafourcadev.demomongodb.domain.services.CreatePersonService;
+import com.alafourcadev.demomongodb.domain.services.GetAllPersonService;
 import com.alafourcadev.demomongodb.infra.common.ApiResponseBase;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,36 +15,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "Person Rest Controller", value = "REST controller to search for all people")
+@Api(tags = "Person Rest Controller", value = "REST controller in charge of creating person objects")
 @RequestMapping("/people")
-public class CreatePersonRestController {
+public class GetAllPersonRestController {
 
-    public static final String OPERATION = "Create a person in the system";
+    public static final String OPERATION = "List all people";
 
-    public final CreatePersonService service;
+    public final GetAllPersonService service;
 
-    @PostMapping
+    @GetMapping
     @ApiOperation(OPERATION)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK."),
-            @ApiResponse(responseCode = "201", description = "Created.", content = @Content(schema = @Schema(implementation = CreatePersonResponse.class))),
+            @ApiResponse(responseCode = "201", description = "Created.", content = @Content(schema = @Schema(implementation = GetAllPersonResponse.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request."),
             @ApiResponse(responseCode = "404", description = "Not Found"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error"),
     })
-    public ResponseEntity<CreatePersonResponse> crear(@Valid @RequestBody Person person) {
-        Person personResponse = service.save(person);
-        return new ResponseEntity<>(new CreatePersonResponse(personResponse), HttpStatus.CREATED);
+    public ResponseEntity<GetAllPersonResponse> getAll() {
+        List<Person> personResponseList = service.getAll();
+        return new ResponseEntity<>(new GetAllPersonResponse(personResponseList), HttpStatus.OK);
     }
 
-    public class CreatePersonResponse extends ApiResponseBase<Person> {
+    public class GetAllPersonResponse extends ApiResponseBase<List<Person>> {
 
-        public CreatePersonResponse(Person result) {
-            super(result, HttpStatus.CREATED, 1);
+        public GetAllPersonResponse(List<Person> result) {
+            super(result, HttpStatus.OK, result.size());
         }
     }
 
