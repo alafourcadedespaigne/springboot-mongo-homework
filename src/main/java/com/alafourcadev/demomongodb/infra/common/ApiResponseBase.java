@@ -88,7 +88,6 @@ public class ApiResponseBase<T> {
         this.result = result;
     }
 
-    //en caso de error entregar codigo de fallo y mensaje
     public ApiResponseBase(Integer statusCode, String statusMessage) {
         this.statusCode = statusCode;
         this.statusMessage = statusMessage;
